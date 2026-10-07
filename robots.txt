@@ -1,0 +1,35 @@
+User-agent: *
+Allow: /
+Disallow: /partials/
+
+# Yapay zekâ arama motorları (GEO) — işletme bilgilerinin doğru özetlenmesi için açık
+User-agent: GPTBot
+Allow: /
+Disallow: /partials/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /partials/
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /partials/
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /partials/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /partials/
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://eskisehirboyabadana.com/sitemap.xml

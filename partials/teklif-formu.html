@@ -1,0 +1,125 @@
+<div class="teklif-app" data-teklif-app>
+
+  <!-- db.json okunamazsa form yerine bu görünür -->
+  <div class="teklif-yukleniyor" data-teklif-yedek hidden>
+    <p>Teklif formu şu anda açılamadı. Arayın ya da WhatsApp’tan yazın — teklifinizi hemen hazırlayalım.</p>
+    <div class="btn-row">
+      <a class="btn btn-call" href="tel:+905332069474" data-tel>
+        <svg width="17" height="17" aria-hidden="true"><use href="#i-phone"></use></svg> 0533 206 94 74
+      </a>
+      <a class="btn btn-wa" href="https://wa.me/905332069474" data-wa rel="noopener" target="_blank">
+        <svg width="17" height="17" aria-hidden="true"><use href="#i-wa"></use></svg> WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <div class="teklif-grid" data-teklif-ekran>
+
+    <!-- FORM -->
+    <form class="teklif-form" data-teklif-form novalidate aria-label="Hızlı teklif formu">
+      <p class="indirim-serit">
+        <svg width="20" height="20" aria-hidden="true"><use href="#i-tag"></use></svg>
+        <span data-field="teklif.indirimMetni">Web sitesinden gelen taleplere özel indirimli fiyat</span>
+      </p>
+
+      <!-- Seçenek grupları data/db.json → teklif.gruplar'dan üretilir -->
+      <div data-teklif-gruplar>
+        <p class="tf-kvkk" style="text-align:left;margin:0 0 18px">Seçenekler yükleniyor…</p>
+      </div>
+
+      <div class="tf-row">
+        <div class="tf-field">
+          <label class="tf-label" for="tf-ilce">İlçe</label>
+          <select class="tf-select" id="tf-ilce" name="ilce" data-ilce-select>
+            <option value="">İlçe seçin</option>
+            <option>Odunpazarı</option>
+            <option>Tepebaşı</option>
+          </select>
+        </div>
+        <div class="tf-field">
+          <label class="tf-label" for="tf-mahalle">Mahalle / site <span class="hint">(opsiyonel)</span></label>
+          <input class="tf-input" id="tf-mahalle" name="mahalle" type="text" maxlength="80" placeholder="Örn: Batıkent, Vişnelik">
+        </div>
+        <div class="tf-field">
+          <label class="tf-label" for="tf-ad">Adınız <span class="hint">(opsiyonel)</span></label>
+          <input class="tf-input" id="tf-ad" name="ad" type="text" maxlength="60" autocomplete="name" placeholder="Adınız Soyadınız">
+        </div>
+        <div class="tf-field">
+          <label class="tf-label" for="tf-telefon">Telefon numaranız <span class="req" aria-hidden="true">*</span></label>
+          <input class="tf-input" id="tf-telefon" name="telefon" type="tel" inputmode="tel" autocomplete="tel"
+                 maxlength="20" placeholder="05XX XXX XX XX" required aria-describedby="tf-telefon-hata">
+          <span class="tf-hata" id="tf-telefon-hata" data-hata="telefon" role="alert"></span>
+        </div>
+      </div>
+
+      <div class="tf-field">
+        <label class="tf-label" for="tf-not">Eklemek istedikleriniz <span class="hint">(opsiyonel)</span></label>
+        <textarea class="tf-textarea" id="tf-not" name="not" maxlength="500"
+                  placeholder="Örn: Tavanlarda su lekesi var, salon duvarı antrasit olsun…"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-lg btn-block tf-submit">
+        <svg width="20" height="20" aria-hidden="true"><use href="#i-wa"></use></svg>
+        Teklif Ver — WhatsApp’a Gönder
+      </button>
+      <button type="button" class="btn btn-ghost btn-block tf-onizle-btn" data-onizle-git>
+        Teklifi önizle
+        <svg width="14" height="14" aria-hidden="true"><use href="#i-chevron"></use></svg>
+      </button>
+      <p class="tf-kvkk">
+        Bilgileriniz yalnızca teklif için WhatsApp üzerinden bize iletilir, sitede saklanmaz.
+        <a href="/kvkk-aydinlatma-metni/">KVKK Aydınlatma Metni</a>
+      </p>
+    </form>
+
+    <!-- CANLI ÖNİZLEME -->
+    <aside class="teklif-onizleme" data-onizleme aria-label="Teklif önizleme">
+      <div class="onizleme-baslik"><span class="canli" aria-hidden="true"></span> Canlı teklif önizleme</div>
+
+      <div class="teklif-kart">
+        <div class="teklif-kart-ust">
+          <img src="/assets/img/logo-mark.png" width="300" height="196" alt="" loading="lazy">
+          <div>
+            <div class="baslik">Teklif önizleme</div>
+            <div class="marka" data-field="brand.name">Eskişehir Boya Badana</div>
+          </div>
+          <div class="no">Teklif No<strong data-teklif-no-yaz>—</strong><span data-teklif-tarih></span></div>
+        </div>
+        <div class="teklif-kart-serit" aria-hidden="true"></div>
+        <div class="teklif-acil-bant" data-acil-bant hidden>🚨 Acil talep — öncelikli dönüş yapılır</div>
+        <dl class="teklif-satirlar" data-satirlar aria-live="polite"></dl>
+        <div class="teklif-fiyat">
+          <span class="ico"><svg width="20" height="20" aria-hidden="true"><use href="#i-tag"></use></svg></span>
+          <span>
+            <small>Fiyat</small>
+            <strong data-field="teklif.fiyatNotu">Size özel indirimli fiyat WhatsApp’tan iletilecek</strong>
+          </span>
+        </div>
+      </div>
+
+      <details class="wa-onizleme" open>
+        <summary>
+          <svg width="18" height="18" aria-hidden="true"><use href="#i-wa"></use></svg>
+          WhatsApp’a gidecek mesaj
+        </summary>
+        <div class="wa-bubble"><span data-wa-mesaj></span><span class="zaman" data-wa-zaman></span></div>
+      </details>
+    </aside>
+  </div>
+
+  <!-- GÖNDERİLDİ -->
+  <div class="teklif-basari" data-teklif-basari hidden tabindex="-1" role="status">
+    <div class="onay"><svg width="34" height="34" aria-hidden="true"><use href="#i-check"></use></svg></div>
+    <h3 data-basari-baslik>Teklif talebiniz hazır!</h3>
+    <p data-basari-metin></p>
+    <p>Teklif no: <span class="no" data-basari-no></span></p>
+    <div class="btn-row">
+      <a class="btn btn-wa btn-lg" href="#" data-basari-wa target="_blank" rel="noopener">
+        <svg width="20" height="20" aria-hidden="true"><use href="#i-wa"></use></svg>
+        WhatsApp’ta mesajı aç ve gönder
+      </a>
+      <button type="button" class="btn btn-ghost" data-yeni-teklif>Yeni teklif oluştur</button>
+    </div>
+  </div>
+
+</div>
